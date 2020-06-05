@@ -6,14 +6,14 @@
 #### Install dependencies
 
 ```bash
-$ yarn 
+$ yarn workspace @alan/api install
 ```
 
 
 ##  4. Running
 
 ```bash
-$ npm run dev
+$ yarn workspace @alan/api run dev
 ```
 
 ## 5. Building
@@ -21,12 +21,12 @@ $ npm run dev
 #### DEV
 
 ```bash
-$ npm run build:dev
+$ yarn workspace @alan/api run build:dev
 ```
 
 #### PROD
 
 ```bash
-$ npm run build
+$ yarn workspace @alan/api run build
 ```
 
