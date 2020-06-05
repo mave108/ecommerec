@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/@alan/api",
-    "packages/@alan/client"
+    "packages/api",
+    "packages/client"
   ]
 }
