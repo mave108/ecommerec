@@ -12,9 +12,11 @@ export class AuthController extends HttpController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    let messageError = "Usuário ou senha incorretos.";
+    let messageError = "incorrect username or password.";
     try {
       const { email, password } = req.body;
+      if (!email || !password)
+        return this.returnBadRequest(res, "email and password are required.");
 
       const user = await User.scope("withPassword").findOne({
         where: { email }
@@ -25,9 +27,8 @@ export class AuthController extends HttpController {
       if (!match) return this.returnUnauthorized(res, messageError);
 
       const access_token = await this.service.generateToken(email);
-
       return this.returnData(res, {
-        access_token,
+        ...access_token,
         auth_user: await User.findOne({ where: { email } })
       });
     } catch (err) {
@@ -45,7 +46,7 @@ export class AuthController extends HttpController {
       const user = await User.scope("withPassword").findOne({
         where: { email }
       });
-      if (!user) return this.returnBadRequest(res, "Usuário inválido!");
+      if (!user) return this.returnBadRequest(res, "Invalid user!");
 
       //creating reset token
       // const resetToken = await this.service.createResetToken(email);
@@ -55,7 +56,7 @@ export class AuthController extends HttpController {
 
       return this.returnMessage(
         res,
-        "E-mail de recuperacão de senha enviado com sucesso!"
+        "Password recovery email sent successfully!"
       );
     } catch (err) {
       return this.returnServerError(res, err.message);
@@ -69,18 +70,18 @@ export class AuthController extends HttpController {
     try {
       const { token, password, confirm_password } = req.body;
 
-      if (!token) return this.returnBadRequest(res, "Token inválido!");
+      if (!token) return this.returnBadRequest(res, "Token invalid!");
       if (password !== confirm_password)
-        return this.returnBadRequest(res, "Senhas não conferem.");
+        return this.returnBadRequest(res, "Passwords do not match.");
 
       const user = await User.scope("resetPassword").findOne({
         where: { reset_password_token: token }
       });
-      if (!user) return this.returnBadRequest(res, "Token inválido!");
+      if (!user) return this.returnBadRequest(res, "Token invalid!");
 
       const now = new Date();
       if (now > user.reset_password_expires)
-        return this.returnBadRequest(res, "Token expirado!");
+        return this.returnBadRequest(res, "Token expired!");
 
       await User.update(
         {
@@ -90,7 +91,7 @@ export class AuthController extends HttpController {
         { where: { id: user.id } }
       );
 
-      return this.returnMessage(res, "Senha atualizada com sucesso!");
+      return this.returnMessage(res, "Password updated successfully!");
     } catch (err) {
       return this.returnServerError(res, err.message);
     }

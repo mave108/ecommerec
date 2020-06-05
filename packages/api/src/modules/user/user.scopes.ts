@@ -1,5 +1,5 @@
 export const defaultScope = {
-  attributes: ['id', 'name', 'email', 'created_at', 'updated_at', 'deleted_at']
+  attributes: ["id", "name", "email", "created_at", "updated_at", "deleted_at"]
 };
 
 export const scopes = {
@@ -7,10 +7,14 @@ export const scopes = {
     ...defaultScope
   },
   withPassword: {
-    attributes: ['id', 'name', 'email', 'password']
+    attributes: ["id", "name", "email", "password"]
   },
   resetPassword: {
-    attributes: ['id', 'email', 'reset_password_token', 'reset_password_expires']
+    attributes: [
+      "id",
+      "email",
+      "reset_password_token",
+      "reset_password_expires"
+    ]
   }
-}
-
+};

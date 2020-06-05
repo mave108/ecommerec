@@ -44,12 +44,14 @@ const storageConfig = {
 };
 
 module.exports = {
-  [env]: { ...defaultConfig, ...storageConfig }
+  [env]: {
+    ...defaultConfig,
+    ...storageConfig
+  }
 };
 // */
 
-/* REMOVE THIS CODE TO IMPLEMENTS MIGRATIONS and SEEDS */
+// /* REMOVE THIS CODE TO IMPLEMENTS MIGRATIONS and SEEDS */
 // exports.config = {
 //   [env]: defaultConfig
 // };
-

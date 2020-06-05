@@ -70,12 +70,12 @@ export default abstract class CrudController extends HttpController {
         return this.returnCreated(
           res,
           created,
-          `${this.service.modelName} criado com sucesso!`
+          `${this.service.modelName} successfully created!`
         );
 
       return this.returnBadRequest(
         res,
-        `Erro durante criação de ${this.service.modelName}`
+        `Error while creating ${this.service.modelName}`
       );
     } catch (err) {
       return this.processException(res, err);
@@ -93,7 +93,7 @@ export default abstract class CrudController extends HttpController {
     if (!id)
       return this.returnNotFound(
         res,
-        `ID de ${this.service.modelName} inválido!`
+        `ID is ${this.service.modelName} invalid!`
       );
 
     try {
@@ -101,12 +101,12 @@ export default abstract class CrudController extends HttpController {
         return this.return(
           res,
           await this.service.get(id),
-          `${this.service.modelName} atualizado com sucesso!`
+          `${this.service.modelName} updated successfully!`
         );
 
       return this.returnServerError(
         res,
-        `Erro durante a atualização de ${this.service.modelName}.`
+        `Error while updating ${this.service.modelName}.`
       );
     } catch (err) {
       return this.processException(res, err);
@@ -123,7 +123,7 @@ export default abstract class CrudController extends HttpController {
     if (!id)
       return this.returnNotFound(
         res,
-        `ID de ${this.service.modelName} inválido!`
+        `ID is ${this.service.modelName} invalid!`
       );
 
     try {

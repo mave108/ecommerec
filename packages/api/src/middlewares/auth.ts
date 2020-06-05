@@ -35,7 +35,7 @@ export class AuthMiddleware extends HttpController {
     const decoded: any = verify(token, this.secretKey);
 
     if (decoded.exp <= Date.now())
-      throw new Error("Acesso Expirado, faça login novamente");
+      throw new Error("Access Expired, login again");
 
     return await User.findOne({ where: { email: decoded.email } });
   };
@@ -63,8 +63,8 @@ export class AuthMiddleware extends HttpController {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
+      var tok = this.getToken(req);
       const authUser = await this.getAuthUser(req);
-
       if (authUser) {
         res.locals = { authUser };
         return next();

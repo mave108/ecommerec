@@ -49,7 +49,7 @@ export const attributes = {
 export const init = (sequelize): void => {
   User.init(attributes, {
     sequelize,
-    tableName: "users",
+    tableName: "store_users",
     defaultScope,
     scopes,
     ...timestamps,
