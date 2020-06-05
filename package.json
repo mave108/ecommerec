@@ -6,5 +6,9 @@
   "repository": "https://github.com/mave108/ecommerec.git",
   "author": "Rakesh <rakeshkumar8900@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "@alan/api",
+    "@alan/client"
+  ]
 }
