@@ -26,7 +26,7 @@
     "morgan": "^1.9.1",
     "pluralize": "^7.0.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^5.1.0"
+    "sequelize": "^5.21.12"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -52,7 +52,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "dev": "pm2 start ./node_modules/sucrase/bin/sucrase-node --name node-crudapi-dev -- ./src/server.ts --watch --color=true && pm2 log",
+    "dev": "pm2 start ../../node_modules/sucrase/bin/sucrase-node --name @alan/api -- ./src/server.ts --watch --color=true && pm2 log",
     "prebuild:dev": "rm -rf build",
     "build:dev": "tsc",
     "postbuild:dev": "pm2 start ecosystem.config.json && pm2 log",
