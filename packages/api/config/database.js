@@ -7,7 +7,9 @@ const {
   DB_DRIVER,
   DB_USER,
   DB_PASSWORD,
-  NODE_ENV
+  DB_PORT,
+  DB_SOCKET_PATH,
+  NODE_ENV,
 } = process.env;
 
 const env = NODE_ENV || "development";
@@ -17,8 +19,10 @@ const defaultConfig = {
   database: DB_NAME,
   username: DB_USER,
   password: DB_PASSWORD,
+  port: DB_PORT,
   dialect: DB_DRIVER, //default is 'mysql'
   dialectOptions: {
+    socketPath: DB_SOCKET_PATH,
     dateStrings: true,
     typeCast: (field, next) => {
       if (field.type === "DATETIME") return field.string();
@@ -27,6 +31,8 @@ const defaultConfig = {
   },
   timezone: "-03:00"
 };
+
+
 
 /* UNCOMMENT THIS BLOCK CODE TO IMPLEMENTS MIGRATIONS and SEEDS */
 // /*
