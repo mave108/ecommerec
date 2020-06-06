@@ -10,7 +10,9 @@
   "workspaces": [
     "packages/api",
     "packages/client",
-    "packages/prettier-config"
+    "packages/prettier-config",
+    "packages/eslint-config",
+    "packages/stylelint-config"
   ],
   "dependencies": {
     "mysql2": "^2.1.0"
