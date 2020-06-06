@@ -1,4 +1,4 @@
 module.exports = {
-    root: true,
-    extends: ['@bechtel/eslint-config'],
+  root: true,
+  extends: ['@alan/eslint-config'],
 };
