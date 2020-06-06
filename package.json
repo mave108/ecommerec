@@ -9,7 +9,8 @@
   "private": true,
   "workspaces": [
     "packages/api",
-    "packages/client"
+    "packages/client",
+    "packages/prettier-config"
   ],
   "dependencies": {
     "mysql2": "^2.1.0"
