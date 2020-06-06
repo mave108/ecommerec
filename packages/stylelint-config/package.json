@@ -1,0 +1,12 @@
+{
+  "name": "@alan/stylelint-config",
+  "version": "1.0.0",
+  "description": "Stylelint presets",
+  "main": "index.js",
+  "dependencies": {
+    "stylelint": "^13.6.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
+  }
+}
